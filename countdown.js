@@ -1,24 +1,19 @@
-// Set the date 10 days from now
-let countDownDate = new Date();
-countDownDate.setDate(countDownDate.getDate() + 10);
+const countdown = () => {
+  const launchDate = new Date("May 5, 2025 00:00:00").getTime();
+  const now = new Date().getTime();
+  const gap = launchDate - now;
 
-countDownDate = countDownDate.getTime();
+  const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
 
-// Update the countdown every 1 second
-let countdownFunction = setInterval(function() {
-  let now = new Date().getTime();
-  let distance = countDownDate - now;
+  const d = Math.floor(gap / day);
+  const h = Math.floor((gap % day) / hour);
+  const m = Math.floor((gap % hour) / minute);
+  const s = Math.floor((gap % minute) / second);
 
-  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  document.getElementById("timer").innerText = `${d}d ${h}h ${m}m ${s}s`;
+};
 
-  document.getElementById("timer").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-
-  if (distance < 0) {
-    clearInterval(countdownFunction);
-    document.getElementById("timer").innerHTML = "Launched!";
-  }
-}, 1000);
+setInterval(countdown, 1000);
