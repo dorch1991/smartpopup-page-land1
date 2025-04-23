@@ -1,31 +1,172 @@
-<form id="signup-form">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <button type="submit">Join Now</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Pop-Up | Early Access</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #eafaf1, #c7f0e2);
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      color: #008060;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .countdown {
+      font-size: 18px;
+      margin: 10px 0 20px;
+      color: #d62828;
+    }
+    p {
+      font-size: 16px;
+      color: #555;
+      margin: 10px 0 30px;
+    }
+    form {
+      margin: 30px auto;
+      max-width: 400px;
+      text-align: left;
+    }
+    input, button {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    input {
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #008060;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #00664e;
+    }
+    .message {
+      text-align: center;
+      font-size: 14px;
+      color: green;
+      margin-top: 10px;
+    }
+    .features, .testimonials {
+      text-align: left;
+      margin-top: 40px;
+    }
+    .features ul {
+      padding-left: 20px;
+      list-style: square;
+    }
+    .features li, .testimonials blockquote {
+      font-size: 15px;
+      margin: 10px 0;
+    }
+    .testimonials blockquote {
+      font-style: italic;
+      border-left: 4px solid #ccc;
+      padding-left: 10px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Smart Pop-Up Logo" class="logo" />
+    <h1>We Can Boost Your Shopify Store Sales!</h1>
+    <div class="countdown" id="countdown">Launching in: 10d 00h 00m 00s</div>
+    <p>Sign up now for early access and get <strong>3 months FREE!</strong></p>
 
-<script>
-  document.getElementById('signup-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const form = e.target;
-    const data = {
-      name: form.name.value,
-      email: form.email.value
-    };
+    <form id="signup-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <button type="submit">Join Now</button>
+      <div class="message" id="message"></div>
+    </form>
 
-    fetch('https://script.google.com/macros/s/AKfycbzpuMXsApZARDtIKIyw5kMVxxuZ5sbLhd7xQ6HBPSptRaOoQ87A2V1hw58cwkstilcb/exec', {
-      method: 'POST',
-      body: JSON.stringify(data)
-    })
-    .then(res => res.text())
-    .then(response => {
-      alert('Thanks for signing up!');
-      form.reset();
-    })
-    .catch(error => {
-      alert('There was a problem. Try again later.');
-      console.error(error);
+    <div class="features">
+      <h2>Why Smart Pop-Up?</h2>
+      <ul>
+        <li>AI-based behavior tracking</li>
+        <li>Personalized product offers in real-time</li>
+        <li>Boost your store's conversions automatically</li>
+        <li>Easy one-click install on Shopify</li>
+      </ul>
+    </div>
+
+    <div class="testimonials">
+      <h2>What our users say</h2>
+      <blockquote>“We increased sales by 28% in the first week!”</blockquote>
+      <blockquote>“Smart Pop-Up is the smartest plugin we ever used.”</blockquote>
+    </div>
+
+    <footer>
+      &copy; 2025 Smart Pop-Up. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('signup-form');
+    const message = document.getElementById('message');
+    const countdownEl = document.getElementById('countdown');
+    const launchDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = launchDate - now;
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / 1000 / 60) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      countdownEl.textContent = `Launching in: ${d}d ${h}h ${m}m ${s}s`;
+    }
+    setInterval(updateCountdown, 1000);
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = {
+        name: form.name.value,
+        email: form.email.value
+      };
+      fetch("https://script.google.com/macros/s/AKfycbzpuMXsApZARDtIKIyw5kMVxxuZ5sbLhd7xQ6HBPSptRaOoQ87A2V1hw58cwkstilcb/exec", {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(res => res.text())
+      .then(() => {
+        message.textContent = "Thanks for signing up!";
+        form.reset();
+      })
+      .catch(() => {
+        message.textContent = "There was a problem. Try again later.";
+        message.style.color = "red";
+      });
     });
-  });
-</script>
+  </script>
+</body>
+</html>
