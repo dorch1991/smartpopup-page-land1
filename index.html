@@ -3,60 +3,176 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart PopUp – Early Access</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Smart Pop-Up | Pre-Sale Offer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0d0f12, #0f1917);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px 20px;
+    }
+    .container {
+      background-color: #1a1f24;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0,255,120,0.1);
+      text-align: center;
+    }
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 28px;
+      color: #00ffae;
+      margin-bottom: 20px;
+    }
+    p, .description {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+    input, button {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+    input {
+      background-color: #2c3136;
+      color: #fff;
+      border: 1px solid #555;
+    }
+    button {
+      background-color: #00c985;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #00a76b;
+    }
+    .countdown {
+      font-size: 16px;
+      color: #ff5f5f;
+      margin: 10px 0 30px;
+    }
+    blockquote {
+      background: #252b30;
+      border-left: 4px solid #00ffae;
+      padding: 10px 15px;
+      margin: 15px 0;
+      font-style: italic;
+      color: #eee;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #666;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      .logo {
+        width: 90px;
+      }
+    }
+  </style>
 </head>
 <body>
+
   <div class="container">
-    <img src="logo.png" alt="Smart PopUp Logo" class="logo" />
-    <h1>We Can Boost Your Shopify Store Sales!</h1>
-    <p>Sign up now for early access and get <strong>3 months FREE!</strong></p>
+    <img src="logo.png" alt="Smart Pop-Up Logo" class="logo" />
+    <h1>Boost Your Sales with Smart Pop-Up</h1>
+
+    <video controls>
+      <source src="promo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="description">
+      Join our exclusive pre-sale!<br>
+      Sign up now and get <strong>3 months free</strong> when Smart Pop-Up launches.<br>
+      Be among the first to experience AI-driven sales growth for Shopify stores.
+    </div>
+
+    <div class="countdown" id="countdown">Launching in: ...</div>
 
     <form id="signup-form">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
-      <button type="submit">Join Now</button>
+      <button type="submit">Join Now – 3 Months Free</button>
     </form>
 
-    <div id="countdown">
-      <h2>Launching in:</h2>
-      <div id="timer"></div>
-    </div>
+    <blockquote>“Sales jumped by 27% in just one week – it’s like magic.” – Liran S.</blockquote>
+    <blockquote>“Smart Pop-Up does what no other plugin could do.” – Maya K.</blockquote>
 
-    <ul class="features">
-      <li>AI-driven product recommendations</li>
-      <li>Increase conversion rates effortlessly</li>
-      <li>No code required</li>
-    </ul>
-
-    <div class="testimonials">
-      <h3>What early users say:</h3>
-      <blockquote>"My sales doubled in just a week!" – Jane D.</blockquote>
-      <blockquote>"Finally a popup that actually works!" – Tom R.</blockquote>
-    </div>
+    <footer>
+      &copy; 2025 Smart Pop-Up | Powered by AI | Built for Shopify
+    </footer>
   </div>
 
-  <script src="countdown.js"></script>
   <script>
-    document.getElementById('signup-form').addEventListener('submit', function(e) {
+    const form = document.getElementById('signup-form');
+    const countdown = document.getElementById('countdown');
+    const launchDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000); // 10 ימים מהיום
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = launchDate - now;
+      if (diff < 0) {
+        countdown.textContent = "We're live!";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      countdown.textContent = `Launching in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateCountdown, 1000);
+
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-      const form = e.target;
       const data = {
         name: form.name.value,
         email: form.email.value
       };
-
-      fetch("https://script.google.com/macros/s/AKfycbzpuMXsApZARDtIKIyw5kMVxxuZ5sbLhd7xQ6HBPSptRaOoQ87A2V1hw58cwkstilcb/exec", {
+      fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
         method: "POST",
         body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
       })
       .then(res => res.text())
       .then(() => {
         alert("Thanks for signing up!");
         form.reset();
       })
-      .catch(() => alert("Something went wrong. Please try again."));
+      .catch(() => {
+        alert("Something went wrong. Please try again.");
+      });
     });
   </script>
+
 </body>
 </html>
