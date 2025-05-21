@@ -2,100 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Pop-Up | Pre-Sale Offer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Pop-Up | Early Access</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0d0f12, #0f1917);
-      color: #ffffff;
+      background: #0F172A;
+      color: #fff;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 60px 20px;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
     }
     .container {
-      background-color: #1a1f24;
-      border-radius: 16px;
-      padding: 40px;
-      max-width: 600px;
+      max-width: 700px;
       width: 100%;
-      box-shadow: 0 0 20px rgba(0,255,120,0.1);
-      text-align: center;
+      background: #1E293B;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
     .logo {
-      width: 120px;
-      margin-bottom: 20px;
+      width: 140px;
+      margin: 0 auto 20px;
+      display: block;
     }
     h1 {
       font-size: 28px;
-      color: #00ffae;
-      margin-bottom: 20px;
+      text-align: center;
+      color: #10B981;
+      margin-bottom: 10px;
     }
-    p, .description {
+    p.description {
+      text-align: center;
       font-size: 16px;
-      color: #ccc;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      color: #cbd5e1;
     }
     video {
       width: 100%;
-      height: auto;
-      border-radius: 12px;
+      border-radius: 10px;
       margin-bottom: 30px;
     }
-    input, button {
-      width: 100%;
-      padding: 14px;
-      margin: 8px 0;
-      border-radius: 8px;
-      border: none;
-      font-size: 16px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
     input {
-      background-color: #2c3136;
-      color: #fff;
-      border: 1px solid #555;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
     }
     button {
-      background-color: #00c985;
-      color: #000;
+      padding: 14px;
+      font-size: 18px;
+      background: #10B981;
+      border: none;
+      border-radius: 8px;
+      color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s;
     }
     button:hover {
-      background-color: #00a76b;
+      background: #059669;
     }
-    .countdown {
-      font-size: 16px;
-      color: #ff5f5f;
-      margin: 10px 0 30px;
-    }
-    blockquote {
-      background: #252b30;
-      border-left: 4px solid #00ffae;
-      padding: 10px 15px;
-      margin: 15px 0;
-      font-style: italic;
-      color: #eee;
-    }
-    footer {
+    .why {
       margin-top: 40px;
-      font-size: 13px;
-      color: #666;
+      background: #0f172a;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #334155;
     }
-    @media (max-width: 600px) {
-      .container {
-        padding: 25px 20px;
-      }
-      h1 {
-        font-size: 24px;
-      }
-      .logo {
-        width: 90px;
-      }
+    .why h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .why ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .why li {
+      margin: 6px 0;
+      padding-left: 1em;
+      position: relative;
+    }
+    .why li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #10B981;
     }
   </style>
 </head>
@@ -103,65 +104,49 @@
 
   <div class="container">
     <img src="logo.png" alt="Smart Pop-Up Logo" class="logo" />
-    <h1>Boost Your Sales with Smart Pop-Up</h1>
+    <h1>Boost Your Shopify Store with Smart Pop-Up</h1>
+    <p class="description">
+      Introducing Smart Pop-Up – the AI-powered app for Shopify. It learns your customers’ behavior and shows them exactly what they need to see.  
+      Sign up now for the pre-sale and get <strong>3 months free</strong>!
+    </p>
 
-    <video controls>
-      <source src="promo.mp4" type="video/mp4">
+    <video autoplay muted loop>
+      <source src="video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-
-    <div class="description">
-      Join our exclusive pre-sale!<br>
-      Sign up now and get <strong>3 months free</strong> when Smart Pop-Up launches.<br>
-      Be among the first to experience AI-driven sales growth for Shopify stores.
-    </div>
-
-    <div class="countdown" id="countdown">Launching in: ...</div>
 
     <form id="signup-form">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
-      <button type="submit">Join Now – 3 Months Free</button>
+      <button type="submit">Join Now</button>
     </form>
 
-    <blockquote>“Sales jumped by 27% in just one week – it’s like magic.” – Liran S.</blockquote>
-    <blockquote>“Smart Pop-Up does what no other plugin could do.” – Maya K.</blockquote>
-
-    <footer>
-      &copy; 2025 Smart Pop-Up | Powered by AI | Built for Shopify
-    </footer>
+    <div class="why">
+      <h2>Why use Smart Pop-Up?</h2>
+      <ul>
+        <li>Built for Shopify stores</li>
+        <li>AI-based behavior tracking</li>
+        <li>Increases conversions automatically</li>
+        <li>Easy setup and instant results</li>
+      </ul>
+    </div>
   </div>
 
   <script>
-    const form = document.getElementById('signup-form');
-    const countdown = document.getElementById('countdown');
-    const launchDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000); // 10 ימים מהיום
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = launchDate - now;
-      if (diff < 0) {
-        countdown.textContent = "We're live!";
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      countdown.textContent = `Launching in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-    setInterval(updateCountdown, 1000);
-
-    form.addEventListener('submit', function(e) {
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      const form = e.target;
       const data = {
         name: form.name.value,
         email: form.email.value
       };
-      fetch("https://script.google.com/macros/s/AKfycbzpuMXsApZARDtIKIyw5kMVxxuZ5sbLhd7xQ6HBPSptRaOoQ87A2V1hw58cwkstilcb/exec", {
+
+      fetch("https://script.google.com/macros/s/AKfycbysx346Ri9q_uxJvg3c8H6PtbmMUqVQx1yqf-H-_lDWBCc2BED4zhW9Jg6lu5VasqKc/exec", {
         method: "POST",
         body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
       .then(res => res.text())
       .then(() => {
@@ -169,7 +154,7 @@
         form.reset();
       })
       .catch(() => {
-        alert("Something went wrong. Please try again.");
+        alert("There was a problem. Please try again later.");
       });
     });
   </script>
